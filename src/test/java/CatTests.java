@@ -39,9 +39,7 @@ public class CatTests {
     @Test
     public void getFoodShouldCallEatMeatMethod() throws Exception{
         Cat cat = new Cat(felineMock);
-        List<String> expectedList = List.of("Животные", "Птицы", "Рыба");
-        Mockito.when(felineMock.eatMeat()).thenReturn(expectedList);
         List<String> actualList = cat.getFood();
-        Mockito.verify(felineMock).eatMeat();
+        Mockito.verify(felineMock, Mockito.times(1)).eatMeat();
     }
 }
