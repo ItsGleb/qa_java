@@ -9,7 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
@@ -48,6 +48,7 @@ public class LionTests {
 
     @Test
     public void getFoodShouldReturnAnimalsBirdsFish() throws Exception {
+        lion = new Lion("Самец", feline);
         List<String> expectedList = List.of("Животные", "Птицы", "Рыба");
         List<String> actualList = lion.getFood();
         assertEquals(expectedList, actualList, "Expected list : Animals,Birds,Fish");
@@ -57,9 +58,9 @@ public class LionTests {
     public void getFoodShouldCallEatMeatMethod() throws Exception {
         Lion lion = new Lion("Самец", felineMock);
         List<String> expectedList = List.of("Животные", "Птицы", "Рыба");
-        Mockito.when(felineMock.eatMeat()).thenReturn(expectedList);
+        Mockito.when(felineMock.getFood("Хищник")).thenReturn(expectedList);
         List<String> actualList = lion.getFood();
-        Mockito.verify(felineMock).eatMeat();
+        Mockito.verify(felineMock).getFood("Хищник");
     }
 
     @Test
