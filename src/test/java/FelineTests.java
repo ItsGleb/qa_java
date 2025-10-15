@@ -42,7 +42,7 @@ public class FelineTests {
     @Test
     public void getKittensShouldReturnKittensCount(){
         int expected = 4;
-        int actual = felineSpy.getKittens(expected);
+        int actual = feline.getKittens(expected);
         assertEquals(expected,actual," getKittens(int int) should return the transmitted value");
     }
 }
